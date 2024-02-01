@@ -14,13 +14,17 @@ program
   .description("解析swagger json 信息生成 api")
   .requiredOption("-u, --url <http|string>", "获取 swagger.json 的 url")
   .option("-o, --outPath <string>", "api 生成路径", "./src/api")
-  // .option('-t, --templatePath <string>', '使用指定的 swagger 模板路径')
-  .action(async ({ url, outPath }) => {
-
+  .option("-t, --templatePath <string>", "使用指定的 swagger 模板路径")
+  .action(async ({ url, outPath, templatePath }) => {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const swaggerJson = await load(url);
     const apiGroups = await parser(swaggerJson);
-    const templateData = await readFile(path.resolve(__dirname, "../api.hbs"));
+    if (templatePath) {
+      console.log("使用自定义模板，模板路径：", templatePath);
+    }
+    templatePath = templatePath || path.resolve(__dirname, "../api.hbs");
+
+    const templateData = await readFile(templatePath);
 
     outPath = outPath.endsWith("/") ? outPath : outPath + "/";
     if (!fs.existsSync(outPath)) {

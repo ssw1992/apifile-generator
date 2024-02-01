@@ -1,7 +1,7 @@
 {
   "name": "apifile-generator",
   "author": "ssw1992",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "index.js",
   "type": "module",
   "license": "MIT",
@@ -12,7 +12,8 @@
   },
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "api.hbs"
   ],
   "dependencies": {
     "commander": "^9.4.0",
