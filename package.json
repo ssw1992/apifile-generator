@@ -1,0 +1,27 @@
+{
+  "name": "apifile-generator",
+  "author": "ssw1992",
+  "version": "0.0.2",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "api-generator": "bin/main.js"
+  },
+  "scripts": {
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "dependencies": {
+    "commander": "^9.4.0",
+    "fs-extra": "^11.1.1",
+    "handlebars": "^4.7.8",
+    "node-fetch": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssw1992/api-generator.git"
+  }
+}

@@ -1,0 +1,18 @@
+// {{ description }}
+import request from '@/utils/request'
+
+
+
+{{#each apis}}  
+/**
+ * {{ this.desc }}
+ */
+export function {{ this.operationId }}({{ paramName }}?: any, config?: {[key:string]:any}) {
+  return request('{{ this.path }}', {
+    method: '{{ this.method }}',
+    {{ paramName }},
+    ...(config || {}),
+  });
+}
+{{/each}}  
+
