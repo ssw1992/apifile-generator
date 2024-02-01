@@ -5,7 +5,8 @@ import load from "../lib/load.js";
 import parser from "../lib/parser.js";
 import generate from "../lib/generate.js";
 import fs from "fs";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 import { readFile } from "../lib/file.js";
 const program = new Command();
 
@@ -15,9 +16,11 @@ program
   .option("-o, --outPath <string>", "api 生成路径", "./src/api")
   // .option('-t, --templatePath <string>', '使用指定的 swagger 模板路径')
   .action(async ({ url, outPath }) => {
+
+    const __dirname = dirname(fileURLToPath(import.meta.url));
     const swaggerJson = await load(url);
     const apiGroups = await parser(swaggerJson);
-    const templateData = await readFile("api.hbs");
+    const templateData = await readFile(path.resolve(__dirname, "../api.hbs"));
 
     outPath = outPath.endsWith("/") ? outPath : outPath + "/";
     if (!fs.existsSync(outPath)) {
