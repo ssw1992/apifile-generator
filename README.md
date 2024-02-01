@@ -1,18 +1,18 @@
-Api-generator
+Apifile-generator
 ======
 
-借助Api-generator，你可以在命令行把swagger的json信息生成开发中使用的api文件
+借助Apifile-generator，你可以在命令行把swagger的json信息生成开发中使用的api文件
 
 ### 安装
 
 ```cmd
-npm i api-generator -g
+npm i apifile-generator -g
 ```
 
 ### 使用
 
 ```cmd
-api-generator -u [swagger json的url 或者 本地地址] -o [输入文件夹 默认 ./src/api]
+apifile-generator -u [swagger json的url 或者 本地地址] -o [输入文件夹 默认 ./src/api]
 ```
 
 ### 未来计划实现
